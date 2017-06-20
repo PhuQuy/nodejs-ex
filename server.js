@@ -1,107 +1,91 @@
-//  OpenShift sample Node application
-var express = require('express'),
-    fs      = require('fs'),
-    app     = express(),
-    eps     = require('ejs'),
-    morgan  = require('morgan');
-    
-Object.assign=require('object-assign')
+// Simulate config options from your production environment by
+// customising the .env file in your project's root folder.
+require('dotenv').config();
 
-app.engine('html', require('ejs').renderFile);
-app.use(morgan('combined'))
+// Require keystone
+var keystone = require('keystone');
+var handlebars = require('express-handlebars');
 
-var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
-    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
-    mongoURLLabel = "";
+// Initialise Keystone with your project's configuration.
+// See http://keystonejs.com/guide/config for available options
+// and documentation.
 
-if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
-  var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
-      mongoHost = process.env[mongoServiceName + '_SERVICE_HOST'],
-      mongoPort = process.env[mongoServiceName + '_SERVICE_PORT'],
-      mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
-      mongoPassword = process.env[mongoServiceName + '_PASSWORD']
-      mongoUser = process.env[mongoServiceName + '_USER'];
+keystone.init({
+	'name': 'phuquy',
+	'brand': 'phuquy',
 
-  if (mongoHost && mongoPort && mongoDatabase) {
-    mongoURLLabel = mongoURL = 'mongodb://';
-    if (mongoUser && mongoPassword) {
-      mongoURL += mongoUser + ':' + mongoPassword + '@';
-    }
-    // Provide UI label that excludes user id and pw
-    mongoURLLabel += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
-    mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
+	'sass': 'public',
+	'static': 'public',
+	'favicon': 'public/images/logo.svg',
+	'views': 'templates/views',
+	'view engine': '.hbs',
 
-  }
+	'custom engine': handlebars.create({
+		layoutsDir: 'templates/views/layouts',
+		partialsDir: 'templates/views/partials',
+		defaultLayout: 'default',
+		helpers: new require('./templates/views/helpers')(),
+		extname: '.hbs',
+	}).engine,
+
+	'emails': 'templates/emails',
+
+	'auto update': true,
+	//  'mongo': 'mongodb://itachi:phuquy@ds129610.mlab.com:29610/phuquyahihi',
+	 'mongo': process.env.MONGO_URI || 'mongodb://itachi:phuquy@ds129610.mlab.com:29610/phuquyahihi',
+	// 'cloudinary config': { cloud_name: 'dsntngtdx', api_key: '392815345381645', api_secret: '0A1cZPsj1cBAQleWEeojUYmTmmM' },
+	'cloudinary config': 'cloudinary://392815345381645:0A1cZPsj1cBAQleWEeojUYmTmmM@dsntngtdx',
+	'cookie secret': 'aa31290d25d1b1c2cee116328f712a8e633fdceb58ffbfdd7efac5a8afd8b735225387f810373170f6ce89199633e7c5492c8c4bfd350414da47d90a3aa2acca',
+	'signin logo': ['/images/logo.svg', 200, 200],
+	'session': true,
+	'auth': true,
+	'user model': 'User',
+});
+
+// Load your project's Models
+keystone.import('models');
+
+// Setup common locals for your templates. The following are required for the
+// bundled templates and layouts. Any runtime locals (that should be set uniquely
+// for each request) should be added to ./routes/middleware.js
+keystone.set('locals', {
+	_: require('lodash'),
+	env: keystone.get('env'),
+	utils: keystone.utils,
+	editable: keystone.content.editable,
+	ga_property: keystone.get('ga property')
+});
+
+// Load your project's Routes
+keystone.set('routes', require('./routes'));
+
+
+
+// Configure the navigation bar in Keystone's Admin UI
+keystone.set('nav', {
+	galleries: 'galleries',
+	enquiries: 'enquiries',
+	'posts': ['posts', 'post-categories', 'post-comments'],
+	'categories': ['categories'],
+	'products': ['product-items', 'product-comments', 'shippings'],
+	'Information': 'information',
+	'Tags': 'tags',
+	booking: 'bookings',
+	users: 'users',
+});
+
+// Start Keystone to connect to your database and initialise the web server
+
+
+if (!process.env.MAILGUN_API_KEY || !process.env.MAILGUN_DOMAIN) {
+	console.log('----------------------------------------'
+	+ '\nWARNING: MISSING MAILGUN CREDENTIALS'
+	+ '\n----------------------------------------'
+	+ '\nYou have opted into email sending but have not provided'
+	+ '\nmailgun credentials. Attempts to send will fail.'
+	+ '\n\nCreate a mailgun account and add the credentials to the .env file to'
+	+ '\nset up your mailgun integration');
 }
-var db = null,
-    dbDetails = new Object();
 
-var initDb = function(callback) {
-  if (mongoURL == null) return;
 
-  var mongodb = require('mongodb');
-  if (mongodb == null) return;
-
-  mongodb.connect(mongoURL, function(err, conn) {
-    if (err) {
-      callback(err);
-      return;
-    }
-
-    db = conn;
-    dbDetails.databaseName = db.databaseName;
-    dbDetails.url = mongoURLLabel;
-    dbDetails.type = 'MongoDB';
-
-    console.log('Connected to MongoDB at: %s', mongoURL);
-  });
-};
-
-app.get('/', function (req, res) {
-  // try to initialize the db on every request if it's not already
-  // initialized.
-  if (!db) {
-    initDb(function(err){});
-  }
-  if (db) {
-    var col = db.collection('counts');
-    // Create a document with request IP and current time of request
-    col.insert({ip: req.ip, date: Date.now()});
-    col.count(function(err, count){
-      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
-    });
-  } else {
-    res.render('index.html', { pageCountMessage : null});
-  }
-});
-
-app.get('/pagecount', function (req, res) {
-  // try to initialize the db on every request if it's not already
-  // initialized.
-  if (!db) {
-    initDb(function(err){});
-  }
-  if (db) {
-    db.collection('counts').count(function(err, count ){
-      res.send('{ pageCount: ' + count + '}');
-    });
-  } else {
-    res.send('{ pageCount: -1 }');
-  }
-});
-
-// error handling
-app.use(function(err, req, res, next){
-  console.error(err.stack);
-  res.status(500).send('Something bad happened!');
-});
-
-initDb(function(err){
-  console.log('Error connecting to Mongo. Message:\n'+err);
-});
-
-app.listen(port, ip);
-console.log('Server running on http://%s:%s', ip, port);
-
-module.exports = app ;
+keystone.start();

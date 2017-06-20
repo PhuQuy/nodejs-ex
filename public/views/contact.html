@@ -1,0 +1,132 @@
+<div id="columns" class="container">
+	<div class="row">
+		<div class="large-left col-sm-12">
+			<div class="row">
+				<div id="center_column" class="center_column col-xs-12 col-sm-12">
+					<div class="breadcrumb clearfix">
+						<a class="home" href="/" title="Return to Home">
+							<i class="fa fa-home"></i>
+						</a>
+						<span class="navigation-pipe">&gt;</span> Liên hệ
+					</div>
+					<!-- /Breadcrumb -->
+					<div id="slider_row">
+						<div id="top_column" class="center_column "></div>
+					</div>
+
+					<h1 class="page-heading bottom-indent">
+						Chăm sóc khách hàng</h1>
+
+
+
+					<!-- <h3>Thanks for getting in touch.</h3> -->
+
+					<div class="contact-form-box" style="text-align: center" ng-show="step==2">
+						<br>
+						<br>
+
+						<h1>Cám ơn đã đóng góp ý kiến!</h1>
+						<br>
+						<br>
+					</div>
+
+					<form class="contact-form-box" ng-show="step==1" name="contractForm">
+						<fieldset>
+							<h3 class="page-subheading">Gửi tin nhắn</h3>
+
+							<div class="clearfix">
+								<div class="col-xs-12 col-md-3">
+									<div class="form-group selector1">
+										<label>Liên hệ với chúng tôi?</label>
+
+										<select name="enquiryType" class="form-control">
+											<option value="position:asc" >Để lại lời nhắn</option>
+											<option value="position:asc" >Để lại câu hỏi</option>
+											<option value="position:asc">Khác...</option>
+										</select>
+									</div>
+
+									<p class="form-group required">
+										<label for="email">Tên <sup>*</sup></label>
+										<input class="form-control grey validate" type="text" id="fullName" ng-model="contact.name.full" name="fullName" required>
+										<span class="help-block" ng-show="contractForm.fullName.$touched && contractForm.fullName.$invalid">Tên bắt buộc. </span>
+									</p>
+
+									<p class="form-group required">
+										<label for="email">Email<sup>*</sup></label>
+										<input class="form-control grey validate" type="email" id="email" name="email" ng-model="contact.email" required>
+										<span class="help-block" ng-show="contractForm.email.$touched && contractForm.email.$invalid">
+												<span ng-show="contractForm.email.$error.required">Email bắt buộc.</span>
+										<span ng-show="contractForm.email.$error.email">Email sai định dạng.</span>
+										</span>
+									</p>
+
+									<div class="form-group selector1">
+										<label>SĐT</label>
+										<input class="form-control grey" placeholder="(tùy chọn)" type="text" ng-model="contact.phone" name="phone">
+									</div>
+
+								</div>
+								<div class="col-xs-12 col-md-9">
+									<div class="form-group ">
+										<label>Tin nhắn</label>
+										<textarea name="message" placeholder="Tin nhắn..." rows="4" ng-model="contact.message" class="form-control"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="form-actions">
+								<button type="button" class="btn btn-default btn-md" ng-click="contactUs()" ng-disabled="contractForm.fullName.$invalid || contractForm.email.$invalid ">
+            	      <span>
+                	    Gửi
+                      <i class="fa fa-chevron-right right"></i>
+                    </span>
+								</button>
+							</div>
+						</fieldset>
+					</form>
+
+					<h1 class="page-heading bottom-indent">
+						Bản đồ</h1>
+					<div id="map" style="margin-bottom:20px; height: 450px"></div>
+				</div>
+
+
+				<!-- #center_column -->
+			</div>
+			<!--.large-left-->
+		</div>
+		<!--.row-->
+	</div>
+	<!-- .row -->
+</div>
+
+<script>
+	$(document).ready(function() {
+		initMap();
+
+	});
+
+	function initMap() {
+		var pos = {
+			lat: 10.823099,
+			lng: 106.629664
+		};
+		var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 15,
+			center: pos,
+			minZoom: 12,
+			maxZoom: 18,
+			scrollwheel:false
+		});
+		var marker = new google.maps.Marker({
+			position: pos,
+			map: map
+		});
+
+		var infoWindow = new google.maps.InfoWindow;
+		infoWindow.setPosition(pos);
+		infoWindow.setContent('<div><h4 style="text-align: center">Nam việt biển</h4><i class="fa fa-map-marker" aria-hidden="true"></i> Tôn đưc thăng, TPCHM<br>' +
+			'<i class="fa fa-phone" aria-hidden="true"></i> 012458896955</div>');
+		infoWindow.open(map);
+	}
+</script>

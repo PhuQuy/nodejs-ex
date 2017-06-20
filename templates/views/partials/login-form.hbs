@@ -1,0 +1,61 @@
+<div ng-controller="LoginCtrl">
+    <form id="header_login_form" ng-submit="onLogin()" ng-show="!isLogin">
+        <!-- <input type="hidden" name="action" value="signin"> -->
+        <div id="create_header_account_error" class="alert alert-danger" ng-hide="isSuccess">Sai email hoặc
+            mật khẩu
+        </div>
+        <div class="form_content clearfix">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="is_required validate account_input form-control" type="text" id="header-email"
+                       name="email" value="" ng-model="email">
+            </div>
+            <div class="form-group">
+                <label for="passwd">Mật khẩu</label>
+                <span><input class="is_required validate account_input form-control" type="password" id="header-passwd"
+                             name="password" value="" autocomplete="off" ng-model="password"></span>
+            </div>
+            <p class="submit">
+                <button type="submit" id="HeaderSubmitLogin" name="HeaderSubmitLogin"
+                        class="btn btn-default btn-sm btn-submit">
+                    <i class="fa fa-lock left"></i>
+                    Sign in
+                </button>
+            </p>
+            <p>
+                <a href="#/register" class="create">Đăng kí</a>
+            </p>
+
+            <div class="clearfix" hidden>
+                <a class="btn btn-default btn-sm btn-login-facebook" href="/" title="Login with Your Facebook Account">
+                    Facebook Login
+                </a>
+                <a class="btn btn-default btn-sm btn-login-google" href="/" title="Login with Your Google Account">
+                    Google Login
+                </a>
+            </div>
+        </div>
+
+    </form>
+
+
+    <form id="header_login_form" ng-show="isLogin">
+        <div class="form_content clearfix">
+            <h3>Hi! <span ng-bind="user.name.first"></span><span ng-bind="user.name.last"></span> </h3>
+            <br>
+
+            <p class="submit">
+                <button id="HeaderSubmitLogin" name="HeaderSubmitLogin" class="btn btn-default btn-sm btn-submit"
+                        ng-click="signout()">
+                    <i class="fa fa-lock left"></i>
+                    Đăng xuất
+                </button>
+                <a id="HeaderSubmitLogin" href="/keystone" target="_blank" name="HeaderSubmitLogin" class="btn  btn-sm btn-submit" ng-show="user.isAdmin">
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    Dashboard admin
+                </a>
+            </p>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,41 @@
+<div id="center_column" class="center_column col-xs-12 col-sm-9">
+
+	<div id="slider_row">
+		<div id="top_column" class="center_column ">
+			<ng-include src="'/views/partials/slide.html'"></ng-include>
+		</div>
+	</div>
+	<ul class="product_list row list">
+		<li class="ajax_block_product first-in-line first-item-of-tablet-line first-item-of-mobile-line col-xs-12"
+			ng-repeat="post in blogs">
+			<div class="product-container">
+				<div class="row">
+					<div class="left-block col-xs-4 col-xs-5 col-md-4">
+						<div class="product-image-container">
+							<a class="product_img_link" style="padding: 4px"
+							   href="/blogs/{{post.slug}}">
+								<img class="replace-2x img-responsive"
+									 ng-src="{{post.image.secure_url}}"
+									 style="height: 160px">
+							</a>
+						</div>
+					</div>
+					<div class="center-block col-xs-8 col-xs-7 col-md-8">
+						<a class="product-name h3"
+						   href="/blogs/{{post.slug}}" title="{{post.title}}">
+							<h3 class="list-name">{{post.title}}</h3>
+						</a>
+						<p class="product-desc">
+							<span class="list-desc" ng-bind-html="post.content.brief|limitString:'medium'"></span>
+						</p>
+						<i class="fa fa-clock-o" aria-hidden="true"></i><span> {{post.publishedDate|date:'dd/MM/yyyy'}}</span>
+					</div>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+	<div class="top-pagination-content clearfix">
+		<pagination total-products="totalPosts" page-limit="5" ng-if="totalPosts.length >0" on-update="updatePost(products)"></pagination>
+	</div>
+</div>

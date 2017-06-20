@@ -1,0 +1,130 @@
+<div id="center_column" class="center_column col-xs-12 col-sm-9">
+	<!-- Breadcrumb -->
+
+	<div class="breadcrumb clearfix">
+		<a class="home" href="/" title="Return to Home">
+			<i class="fa fa-home"></i>
+		</a>
+		<span class="navigation-pipe"></span> Đăng kí
+	</div>
+
+	<!-- /Breadcrumb -->
+	<div id="slider_row">
+		<div id="top_column" class="center_column "></div>
+	</div>
+
+
+	<h1 class="page-heading">Đặng kí</h1>
+
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-12">
+			<form class="box" name="formInfo">
+				<h3 class="page-subheading">Tạo tài khản</h3>
+
+				<div class="form_content clearfix">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Họ và tên đệm <sup>*</sup></label>
+								<input type="text" name="firstName" ng-model="info.firstName" class="form-control"
+									   required>
+								<span class="help-block"
+									  ng-show="formInfo.firstName.$touched && formInfo.firstName.$invalid">Họ và tên đệm là bắt buộc. </span>
+
+
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="required form-group">
+								<label for="lastName">Tên <sup>*</sup></label>
+								<input type="text" class=" form-control" id="lastName" name="lastName"
+									   ng-model="info.lastName" required>
+								<span class="help-block"
+									  ng-show="formInfo.lastName.$touched && formInfo.lastName.$invalid">Tên là bắt buộc. </span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="required form-group">
+								<label >Email <sup>*</sup></label>
+								<input type="email" class="form-control" name="email" ng-model="info.email" required>
+								<span class="help-block" ng-show="formInfo.email.$touched && formInfo.email.$invalid">
+												<span ng-show="formInfo.email.$error.required">Email là bắt buộc.</span>
+								<span ng-show="formInfo.email.$error.email">Sai định dạng email.</span>
+								</span>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="required form-group">
+								<label>SĐT <sup>*</sup></label>
+								<input type="text" class="form-control" name="phone" ng-model="info.phone" required
+									   ng-pattern="/[0-9]{9}$/">
+								<span class="help-block"
+									  ng-show="formInfo.phone.$touched && formInfo.phone.$invalid">
+												<span ng-show="formInfo.phone.$error.required">SĐT là bắt buộc.</span>
+                                       			 <span ng-show="formInfo.phone.$error.pattern">Sai định dạng SĐT.</span>
+											</span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="required form-group">
+								<label>Mật khẩu <sup>*</sup></label>
+								<input type="password" class="form-control" name="password" ng-model="info.password"
+									   required ng-minlength="5">
+								<span class="help-block"
+									  ng-show="formInfo.password.$touched && formInfo.password.$invalid">
+												<span ng-show="formInfo.password.$error.required">Mật khẩu lả bắt buộc.</span>
+								<span ng-show="formInfo.password.$error.minlength">Độ dài mật khẩu <5.</span>
+								</span>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="required form-group">
+								<label>Mật khẩu nhập lại <sup>*</sup></label>
+								<input type="password" class="form-control" name="rePassword" required
+									   ng-model="info.rePassword" ng-minlength="5">
+								<span class="help-block"
+									  ng-show="formInfo.rePassword.$touched && formInfo.rePassword.$invalid">
+												<span ng-show="formInfo.rePassword.$error.required">Mật khẩu nhập lại bắt buộc.</span>
+								<span ng-show="formInfo.rePassword.$error.minlength">Mật khẩu nhập lại độ dài < 5.</span>
+								</span>
+								<span class="help-block"
+									  ng-show="passwordInvalid">
+								Mật khẩu nhập lại không giống 
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="required form-group">
+								<label for="address">Địa chỉ
+									<sup>*</sup></label>
+								<textarea rows="4" class="form-control" name="address" id="address"
+										  ng-model="info.address" required></textarea>
+								<span class="help-block"
+									  ng-show="formInfo.address.$touched && formInfo.address.$invalid">Địa chỉ là bắt buộc. </span>
+							</div>
+						</div>
+					</div>
+					<div class="submit">
+						<button class="btn btn-default btn-md btn-submit" id="SubmitCreate" name="SubmitCreate"
+								ng-disabled="formInfo.firstName.$invalid || formInfo.lastName.$invalid ||formInfo.phone.$invalid || formInfo.email.$invalid ||formInfo.address.$invalid||formInfo.password.$invalid||formInfo.rePassword.$invalid||passwordInvalid"
+								ng-click="register()">
+							<span>
+								<i class="fa fa-user left"></i>
+								Đăng kí
+							</span>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+</div>

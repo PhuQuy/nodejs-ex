@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" class="desktop portrait" ng-app="myApp" ng-controller="mainCtrl">
+
+<head>
+	<base href="/">
+	<meta name="google-site-verification" content="OWnS_C9-F9KDP_B71t7-_GxzddrWYYuxvdv0LiACiKw" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="fragment" content="!">
+
+	<title>{{seo.pageTitle}} | Nam việt biển</title>
+	<meta name="description" content="{{seo.pageDescription}}">
+
+	<meta property="fb:app_id" content="809586245875681">
+
+	<link href="/favicon.ico" type="image/x-icon" rel="icon">
+
+	<script src="/js/libs/jquery/jquery-3.2.1.min.js"></script>
+	<link href="/styles/libs/jquery.bxslider/jquery.bxslider.css" rel="stylesheet">
+	<link href="/styles/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+	<link href="/styles/global.css" rel="stylesheet">
+	<link href="/styles/category.css" rel="stylesheet">
+	<link href="/styles/blockcategories.css" rel="stylesheet">
+	<link href="/styles/blockpermanentlinks.css" rel="stylesheet">
+	<link href="/styles/blockcurrencies.css" rel="stylesheet">
+	<link href="/styles/blocklanguages.css" rel="stylesheet">
+	<link href="/styles/blocksearch.css" rel="stylesheet">
+	<link href="/styles/front.css" rel="stylesheet">
+	<link href="/styles/blockcart.css" rel="stylesheet">
+	<link href="/styles/hooks.css" rel="stylesheet">
+	<link href="/styles/blocktags.css" rel="stylesheet">
+	<link href="/styles/blocktags.css" rel="stylesheet">
+	<link href="/styles/homeslider.css" rel="stylesheet">
+	<link href="/styles/product_list.css" rel="stylesheet">
+	<link href="/styles/uniform.default.css" rel="stylesheet">
+	<link href="/styles/main.css" rel="stylesheet">
+	<link href="/styles/contact-form.css" rel="stylesheet">
+
+	<link href="/styles/product.css" rel="stylesheet">
+	<link href="/styles/tmproductvideos.css" rel="stylesheet">
+	<link href="/styles/productcomments.css" rel="stylesheet">
+
+	<link href="/styles/libs/jqzoom/jquery.jqzoom.css" rel="stylesheet">
+	<link href="/styles/libs/fancybox/jquery.fancybox.css" rel="stylesheet">
+
+	<script src='js/libs/angular/angular.js'></script>
+
+	<script src='js/libs/angular-sanitize/angular-sanitize.js'></script>
+	<script src='js/libs/angular-route/angular-route.js'></script>
+	<script src='js/libs/angular-aria/angular-aria.js'></script>
+	<script src='js/libs/angular-animate/angular-animate.js'></script>
+	<script src='js/libs/angular-resource/angular-resource.js'></script>
+
+	<script src="/js/libs/jquery.bxslider/jquery.bxslider.min.js"></script>
+
+	<script src="/js/global.js"></script>
+	<script src="/js/tools.js"></script>
+
+
+	<script src="/js/libs/bootstrap/bootstrap.min.js"></script>
+	<script src="/js/TweenMax.min.js"></script>
+	<script src="/js/ScrollMagic.min.js"></script>
+	<script src="/js/libs/jquery.bxslider/jquery.bxslider.min.js"></script>
+	<script src="/js/libs/bootstrap/bootstrap.min.js"></script>
+	<script src="/js/ScrollMagic.min.js"></script>
+	<script src="/js/global.js"></script>
+	<script src="/js/TweenMax.min.js"></script>
+
+
+</head>
+
+<body id="index" class="index hide-right-column lang_en  two-columns">
+<div id="page">
+	<ng-include src="'views/partials/header.html'"></ng-include>
+	<div class="columns-container">
+		<div id="columns" class="container">
+			<div class="row">
+				<div class="large-left col-sm-12">
+					<div class="row">
+						<ng-view></ng-view>
+						<ng-include src="'/views/partials/nav.html'"></ng-include>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<ng-include src="'/views/partials/footer.html'"></ng-include>
+</div>
+
+<script>
+
+	var FancyboxI18nClose = 'Close';
+	var FancyboxI18nNext = 'Next';
+	var FancyboxI18nPrev = 'Previous';
+
+	var productColumns = '2';
+
+	var jqZoomEnabled = true;
+
+	var quantityAvailable = 5;
+	var allowBuyWhenOutOfStock = false;
+
+</script>
+
+
+<script src="/js/product.js"></script>
+<script src="/js/libs/jqzoom/jquery.jqzoom.js"></script>
+<script src="/js/libs/fancybox/jquery.fancybox.js"></script>
+<script src="/js/libs/scroll/jquery.scrollTo.js"></script>
+<script src="/js/libs/scroll/jquery.serialScroll.js"></script>
+
+
+<script src="app.js"></script>
+<script src="services/services.js"></script>
+<script src="directives/directive.js"></script>
+<script src="controllers/HomeCtrl.js"></script>
+<script src="controllers/NavCtrl.js"></script>
+<script src="controllers/CheckoutCtrl.js"></script>
+<script src="controllers/ContactCtrl.js"></script>
+<script src="controllers/CategoryCtrl.js"></script>
+<script src="controllers/DetailCtrl.js"></script>
+<script src="controllers/BlockCartCtrl.js"></script>
+<script src="controllers/HeaderCtrl.js"></script>
+<script src="controllers/SearchCtrl.js"></script>
+<script src="controllers/BlogCtrl.js"></script>
+<script src="controllers/BlogDetailCtrl.js"></script>
+<script src="controllers/LoginCtrl.js"></script>
+<script src="controllers/RegisterCtrl.js"></script>
+
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyBAqkedS__-ucPHLWZIsV8UDa14oyQ09Kc"></script>
+
+</body>
+
+</html>

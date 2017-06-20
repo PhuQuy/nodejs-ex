@@ -1,0 +1,64 @@
+<div id="left_column" class="column col-xs-12 col-sm-3" ng-controller="NavCtrl" ng-show="isShow">
+	<!-- Block categories module -->
+	<section id="categories_block_left" class="block">
+		<h4 class="title_block">Danh mục</h4>
+
+		<div class="block_content" style="">
+			<ul class="tree dhtml">
+				<li ng-repeat="category in categories" >
+					<a href="/categories/{{category.key}}" ng-class="{'selected':isActiveLink(category.key)}">{{category.name}}</a>
+					<span class="grower CLOSE" ng-if="category.categories.length>0" ng-click="openCategories($event)"> </span>
+					<ul hidden ng-if="category.categories.length>0">
+						<li ng-repeat="categoryChild in category.categories">
+							<a href="/categories/{{categoryChild.key}}" ng-class="{'selected':isActiveLink(categoryChild.key)}"><strong>{{categoryChild.name}}</strong></a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- MODULE Block best sellers -->
+	<section id="best-sellers_block_right" class="block products_block">
+		<h4 class="title_block">
+			<a title="View a top sellers products">Bán chạy</a>
+		</h4>
+		<div class="block_content" style="">
+			<ul class="block_content products-block" ng-repeat="topSeller in topSellers ">
+				<li class="clearfix">
+					<a class="products-block-image content_img clearfix" href="/products/{{topSeller.slug}}">
+						<img class="replace-2x img-responsive" ng-src="{{topSeller.image.secure_url}}" style="height: 250px"  />
+					</a>
+					<div class="product-content">
+						<h5><a class="product-name" href="/products/{{topSeller.slug}}" >{{topSeller.name}}</a>
+						</h5>
+						<p class="product-description">{{topSeller.description}}</p>
+						<div class="price-box">
+							<span class="price">{{topSeller.price|currency:"":0}}đ</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<div class="lnk">
+				<a href="/top-seller" title="All best sellers" class="btn btn-default btn-sm icon-right">
+					<span>
+          	Tất cả sản phẩm bán chạy
+          </span>
+				</a>
+			</div>
+		</div>
+	</section>
+	<!-- /MODULE Block best sellers -->
+	<!-- Block tags module -->
+	<section id="tags_block_left" class="block tags_block">
+		<h4 class="title_block">
+			Tags
+		</h4>
+		<div class="block_content" style="">
+			<a class="tag_level3 first_item" ng-repeat="tag in tags" title="{{tag.description}}">
+				<p ng-click="onSearch(tag.name)">{{tag.name}}</p>
+			</a>
+		</div>
+	</section>
+	<!-- /Block tags module -->
+</div>

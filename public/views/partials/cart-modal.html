@@ -1,0 +1,83 @@
+<div id="addCartModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Thêm vào giỏ hàng</h4>
+			</div>
+			<div class="modal-body">
+				<div id="layer_cart" style=" display: block;">
+					<div class="clearfix">
+						<div class="layer_cart_product col-xs-12 col-md-6">
+							<h2>
+								<i class="fa fa-ok"></i>
+								<span ng-show="order.success">Sản phẩm đã được thêm thành công vào giỏ hàng</span>
+								<span ng-hide="order.success" style="color:red">Sản phẩm không thêm được vào giỏ (Kho đã hết hàng)</span>
+							</h2>
+
+							<div class="product-image-container layer_cart_img"><img
+									class="layer_cart_img img-responsive"
+									ng-src="{{order.cart.imageUrl}}" width="160px" height="160px"></div>
+							<div class="layer_cart_product_info">
+								<span id="layer_cart_product_title" class="product-name">{{order.cart.name}}</span>
+								<span id="layer_cart_product_attributes"></span>
+
+								<div>
+									<strong class="dark">Số lượng</strong>
+									<span id="layer_cart_product_quantity">{{order.cart.quanlity}}</span>
+								</div>
+								<div>
+									<strong class="dark">Thành tiền</strong>
+									<span id="layer_cart_product_price">{{order.cart.price|currency:"":2}}đ</span>
+								</div>
+							</div>
+						</div>
+						<div class="layer_cart_cart col-xs-12 col-md-6">
+							<h2>
+								<!-- Plural Case [both cases are needed because page may be updated in Javascript] -->
+								<span class="ajax_cart_product_txt_s ">
+						Đang có <span class="ajax_cart_quantity">{{order.lengthItem}}</span> sản phẩm trong giỏ của bạn.
+					</span>
+							</h2>
+
+							<div class="layer_cart_row">
+								<strong class="dark">
+									Tổng số sản phẩm
+								</strong>
+								<span class="ajax_block_products_total">{{order.totalProducts|currency:"":2}}đ</span>
+							</div>
+
+							<div class="layer_cart_row">
+								<strong class="dark">
+									Tổng phí vận chuyển&nbsp;                    </strong>
+								<span class="ajax_cart_shipping_cost">{{order.shipping}}đ</span>
+							</div>
+							<div class="layer_cart_row">
+								<strong class="dark">
+									Tổng cộng
+								</strong>
+								<span class="ajax_block_cart_total">{{order.totalProducts+order.shipping|currency:"":2}}đ</span>
+							</div>
+							<div class="button-container">
+								<span class="continue btn btn-default btn-md icon-left" title="Continue shopping"
+									  ng-click="hideModal()">
+						<span>
+                            Tiếp tục mua sắm
+						</span>
+								</span>
+								<a class="btn btn-default btn-md icon-right standard-checkout"
+								   title="Proceed to checkout" rel="nofollow" ng-click="checkout()">
+						<span>
+							Thanh toán
+						</span>
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="crossseling"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

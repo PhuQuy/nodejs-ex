@@ -1,0 +1,336 @@
+<link href="/styles/uniform.default.css" rel="stylesheet">
+<div id="center_column" class="center_column col-xs-12 col-sm-9">
+    <!-- Breadcrumb -->
+
+    <div class="breadcrumb clearfix">
+        <a class="home" href="/" title="Return to Home">
+            <i class="fa fa-home"></i>
+        </a>
+        <span class="navigation-pipe">&gt;</span>
+		{{#if data.category}}
+			{{data.category.name}}
+		{{else}}
+            404
+		{{/if}}
+    </div>
+
+    <!-- /Breadcrumb -->
+    <div id="slider_row">
+        <div id="top_column" class="center_column "></div>
+    </div>
+
+    <div class="content_scene_cat">
+        <!-- Category image -->
+        <div class="content_scene_cat_bg row">
+            <div class="category-image hidden-xs col-xs-12 col-sm-5 col-md-4 col-lg-3">
+                <img class="img-responsive" src="{{cloudinaryUrl data.category.image }}"/>
+            </div>
+            <div class="cat_desc  col-xs-12 col-sm-7 col-md-8 col-lg-9">
+                            <span class="category-name">
+								{{data.category.name}}</span>
+                <div id="category_description_short" class="rte"><p> Many people love supermarkets for the variety of products they can buy there</p></div>
+                <div id="category_description_full" class="unvisible rte"><p> {{{data.category.description}}} </p></div>
+                <a href="#"  class="lnk_more" title="More">More</a>
+            </div>
+        </div>
+    </div>
+    <h1 class="page-heading product-listing">
+        <span class="cat-name">{{data.category.name}}</span>
+        <span class="heading-counter">There are {{data.products.total}} products.</span>
+    </h1>
+
+    <!-- Subcategories -->
+    <!-- <div id="subcategories">
+        <p class="subcategory-heading">Subcategories</p>
+        <ul class="clearfix">
+            <li>
+                <div class="subcategory-image">
+                    <a href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=4&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=" title="Aliquam congue" class="img">
+                        <img class="replace-2x" src="https://livedemo00.template-help.com/prestashop_54022/img/c/4-tm_medium_default.jpg" alt="Aliquam congue">
+                    </a>
+                </div>
+                <h5>
+                    <a class="subcategory-name" href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=4&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=" title="Aliquam congue">Aliquam congue</a>
+                </h5>
+                <div class="cat_desc"><p>Many people love supermarkets for the variety of products they can buy there. Such customers adore looking at the collection of different stuff and choose from all these things. <br><br>However the products <span class="T1">are</span> strictly classified, so the shoppers seeking for exact items would surely find what they want. The assortment<span class="T1"> is</span> not only comfortably structured, but also wide. We treat every customer as a welcoming guest and that''s why the main elements of the supermarket are totally adapted for the visitors'' comfort. First of all, it''s worth to be mentioned about the good loyal prices suitable for any customer. Then, you''ll get only positive impressions from our service level - professional staff of specially taught employees knows well what they are doing to leave the customer happy. The building is always light and clean.</p></div>
+            </li>
+            <li>
+                <div class="subcategory-image">
+                    <a href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=11&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=" title="Pellentesque sed" class="img">
+                        <img class="replace-2x" src="https://livedemo00.template-help.com/prestashop_54022/img/c/11-tm_medium_default.jpg" alt="Pellentesque sed">
+                    </a>
+                </div>
+                <h5>
+                    <a class="subcategory-name" href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=11&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=" title="Pellentesque sed">Pellentesque sed</a>
+                </h5>
+                <div class="cat_desc"><p>Many people love supermarkets for the variety of products they can buy there. Such customers adore looking at the collection of different stuff and choose from all these things. <br><br>However the products <span class="T1">are</span> strictly classified, so the shoppers seeking for exact items would surely find what they want. The assortment<span class="T1"> is</span> not only comfortably structured, but also wide. We treat every customer as a welcoming guest and that''s why the main elements of the supermarket are totally adapted for the visitors'' comfort. First of all, it''s worth to be mentioned about the good loyal prices suitable for any customer. Then, you''ll get only positive impressions from our service level - professional staff of specially taught employees knows well what they are doing to leave the customer happy. The building is always light and clean.</p></div>
+            </li>
+            <li>
+                <div class="subcategory-image">
+                    <a href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=18&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=" title="Enim adipiscing" class="img">
+                        <img class="replace-2x" src="https://livedemo00.template-help.com/prestashop_54022/img/c/18-tm_medium_default.jpg" alt="Enim adipiscing">
+                    </a>
+                </div>
+                <h5>
+                    <a class="subcategory-name" href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=18&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=" title="Enim adipiscing">Enim adipiscing</a>
+                </h5>
+                <div class="cat_desc"><p>Many people love supermarkets for the variety of products they can buy there. Such customers adore looking at the collection of different stuff and choose from all these things. <br><br>However the products <span class="T1">are</span> strictly classified, so the shoppers seeking for exact items would surely find what they want. The assortment<span class="T1"> is</span> not only comfortably structured, but also wide. We treat every customer as a welcoming guest and that''s why the main elements of the supermarket are totally adapted for the visitors'' comfort. First of all, it''s worth to be mentioned about the good loyal prices suitable for any customer. Then, you''ll get only positive impressions from our service level - professional staff of specially taught employees knows well what they are doing to leave the customer happy. The building is always light and clean.</p></div>
+            </li>
+            <li>
+                <div class="subcategory-image">
+                    <a href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=25&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=" title="Aliquet sit amet" class="img">
+                        <img class="replace-2x" src="https://livedemo00.template-help.com/prestashop_54022/img/c/25-tm_medium_default.jpg" alt="Aliquet sit amet">
+                    </a>
+                </div>
+                <h5>
+                    <a class="subcategory-name" href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=25&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=" title="Aliquet sit amet">Aliquet sit amet</a>
+                </h5>
+                <div class="cat_desc"><p>Many people love supermarkets for the variety of products they can buy there. Such customers adore looking at the collection of different stuff and choose from all these things. <br><br>However the products <span class="T1">are</span> strictly classified, so the shoppers seeking for exact items would surely find what they want. The assortment<span class="T1"> is</span> not only comfortably structured, but also wide. We treat every customer as a welcoming guest and that''s why the main elements of the supermarket are totally adapted for the visitors'' comfort. First of all, it''s worth to be mentioned about the good loyal prices suitable for any customer. Then, you''ll get only positive impressions from our service level - professional staff of specially taught employees knows well what they are doing to leave the customer happy. The building is always light and clean.</p></div>
+            </li>
+            <li>
+                <div class="subcategory-image">
+                    <a href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=32&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=" title="Phasellus" class="img">
+                        <img class="replace-2x" src="https://livedemo00.template-help.com/prestashop_54022/img/c/32-tm_medium_default.jpg" alt="Phasellus">
+                    </a>
+                </div>
+                <h5>
+                    <a class="subcategory-name" href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=32&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=" title="Phasellus">Phasellus</a>
+                </h5>
+                <div class="cat_desc"><p>Many people love supermarkets for the variety of products they can buy there. Such customers adore looking at the collection of different stuff and choose from all these things. <br><br>However the products <span class="T1">are</span> strictly classified, so the shoppers seeking for exact items would surely find what they want. The assortment<span class="T1"> is</span> not only comfortably structured, but also wide. We treat every customer as a welcoming guest and that''s why the main elements of the supermarket are totally adapted for the visitors'' comfort. First of all, it''s worth to be mentioned about the good loyal prices suitable for any customer. Then, you''ll get only positive impressions from our service level - professional staff of specially taught employees knows well what they are doing to leave the customer happy. The building is always light and clean.</p></div>
+            </li>
+        </ul>
+    </div> -->
+
+    <div class="content_sortPagiBar clearfix">
+        <div class="sortPagiBar clearfix">
+            <ul class="display hidden-xs">
+                <li class="display-title">View:</li>
+                <li id="grid" class="selected">
+                    <a rel="nofollow" href="#" title="Grid">
+                        <i class="fa fa-th-large"></i>
+                        Grid
+                    </a>
+                </li>
+                <li id="list">
+                    <a rel="nofollow" href="#" title="List">
+                        <i class="fa fa-th-list"></i>
+                        List
+                    </a>
+                </li>
+            </ul>
+            <form id="productsSortForm" action="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=3&amp;controller=category&amp;id_lang=1&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=" class="productsSortForm">
+                <div class="select selector1">
+                    <label for="selectProductSort">Sort by</label>
+                    <div class="selector" id="uniform-selectProductSort" style="width: 192px;"><span style="width: 180.011px; user-select: none;">--</span><select id="selectProductSort" class="selectProductSort form-control">
+                        <option value="position:asc" selected="selected">--</option>
+                        <option value="price:asc">Price: Lowest first</option>
+                        <option value="price:desc">Price: Highest first</option>
+                        <option value="name:asc">Product Name: A to Z</option>
+                        <option value="name:desc">Product Name: Z to A</option>
+                        <option value="quantity:desc">In stock</option>
+                        <option value="reference:asc">Reference: Lowest first</option>
+                        <option value="reference:desc">Reference: Highest first</option>
+                    </select></div>
+                </div>
+            </form>
+
+            <!-- /Sort products -->
+
+
+            <!-- nbr product/page -->
+            <form action="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=3&amp;controller=category&amp;id_lang=1" method="get" class="nbrItemPage">
+                <div class="clearfix selector1">
+                    <label for="nb_item">
+                        Show
+                    </label>
+                    <input type="hidden" name="id_lang" value="1">
+                    <input type="hidden" name="live_configurator_token" value="79c964ca67a9882cc1c218afac253506">
+                    <input type="hidden" name="id_shop" value="1">
+                    <input type="hidden" name="id_employee" value="2">
+                    <input type="hidden" name="theme" value="">
+                    <input type="hidden" name="theme_font" value="">
+                    <input type="hidden" name="id_category" value="3">
+                    <input type="hidden" name="controller" value="category">
+                    <div class="selector" id="uniform-nb_item" style="width: 59px;"><span style="width: 47.0114px; user-select: none;">6</span>
+                      <select name="n" id="nb_item" class="form-control" >
+                        <option value="6" selected="selected">6</option>
+                        <option value="12">12</option>
+                        <option value="30">30</option>
+                    </select></div>
+                    <span>per page</span>
+                </div>
+            </form>
+            <!-- /nbr product/page -->
+
+        </div>
+        <div class="top-pagination-content clearfix">
+            <form method="post" action="https://livedemo00.template-help.com/prestashop_54022/index.php?controller=products-comparison" class="compare-form">
+                <button type="submit" class="btn btn-default bt_compare icon-right" disabled="disabled">
+			<span>Compare
+            	(
+            	<strong class="total-compare-val">0</strong>
+                )
+            </span>
+                </button>
+                <input type="hidden" name="compare_product_count" class="compare_product_count" value="0">
+                <input type="hidden" name="compare_product_list" class="compare_product_list" value="">
+            </form>
+
+
+            <!-- Pagination -->
+            <div id="pagination" class="pagination clearfix">
+                <form class="showall" action="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=3&amp;controller=category&amp;id_lang=1" method="get">
+                    <div>
+                        <button type="submit" class="btn btn-default">
+                            <span>Show all</span>
+                        </button>
+                        <input type="hidden" name="id_lang" value="1">
+                        <input type="hidden" name="live_configurator_token" value="79c964ca67a9882cc1c218afac253506">
+                        <input type="hidden" name="id_shop" value="1">
+                        <input type="hidden" name="id_employee" value="2">
+                        <input type="hidden" name="theme" value="">
+                        <input type="hidden" name="theme_font" value="">
+                        <input type="hidden" name="id_category" value="3">
+                        <input type="hidden" name="controller" value="category">
+                        <input name="n" id="nb_item" class="hidden" value="29">
+                    </div>
+                </form>
+
+                <ul class="pagination">
+                    <li id="pagination_previous" class="disabled pagination_previous">
+						<span>
+							<i class="fa fa-chevron-left"></i>
+                            <b>Previous</b>
+						</span>
+                    </li>
+                    <li class="active current">
+							<span>
+								<span>1</span>
+							</span>
+                    </li>
+                    <li>
+                        <a href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=3&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=#/page-2">
+                            <span>2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=3&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=#/page-3">
+                            <span>3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=3&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=#/page-4">
+                            <span>4</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=3&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=#/page-5">
+                            <span>5</span>
+                        </a>
+                    </li>
+                    <li id="pagination_next" class="pagination_next">
+                        <a href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=3&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=#/page-2" rel="next">
+                            <b>Next</b> <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="product-count">
+                Showing 1 - 6 of 29 items
+            </div>
+            <!-- /Pagination -->
+
+        </div>
+    </div>
+    <!-- Products list -->
+    <ul class="product_list grid row">
+		{{> list-product products=data.products.results}}
+    </ul>
+
+
+    <div class="content_sortPagiBar">
+        <div class="bottom-pagination-content clearfix">
+            <form method="post" action="https://livedemo00.template-help.com/prestashop_54022/index.php?controller=products-comparison" class="compare-form">
+                <button type="submit" class="btn btn-default bt_compare icon-right" disabled="disabled">
+			<span>Compare
+            	(
+            	<strong class="total-compare-val">0</strong>
+                )
+            </span>
+                </button>
+                <input type="hidden" name="compare_product_count" class="compare_product_count" value="0">
+                <input type="hidden" name="compare_product_list" class="compare_product_list" value="">
+            </form>
+
+
+
+            <!-- Pagination -->
+            <div id="pagination_bottom" class="pagination clearfix">
+                <form class="showall" action="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=3&amp;controller=category&amp;id_lang=1" method="get">
+                    <div>
+                        <button type="submit" class="btn btn-default">
+                            <span>Show all</span>
+                        </button>
+                        <input type="hidden" name="id_lang" value="1">
+                        <input type="hidden" name="live_configurator_token" value="79c964ca67a9882cc1c218afac253506">
+                        <input type="hidden" name="id_shop" value="1">
+                        <input type="hidden" name="id_employee" value="2">
+                        <input type="hidden" name="theme" value="">
+                        <input type="hidden" name="theme_font" value="">
+                        <input type="hidden" name="id_category" value="3">
+                        <input type="hidden" name="controller" value="category">
+                        <input name="n" id="nb_item" class="hidden" value="29">
+                    </div>
+                </form>
+
+                <ul class="pagination">
+                    <li id="pagination_previous_bottom" class="disabled pagination_previous">
+						<span>
+							<i class="fa fa-chevron-left"></i>
+                            <b>Previous</b>
+						</span>
+                    </li>
+                    <li class="active current">
+							<span>
+								<span>1</span>
+							</span>
+                    </li>
+                    <li>
+                        <a href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=3&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=#/page-2">
+                            <span>2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=3&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=#/page-3">
+                            <span>3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=3&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=#/page-4">
+                            <span>4</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=3&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=#/page-5">
+                            <span>5</span>
+                        </a>
+                    </li>
+                    <li id="pagination_next_bottom" class="pagination_next">
+                        <a href="https://livedemo00.template-help.com/prestashop_54022/index.php?id_category=3&amp;controller=category&amp;id_lang=1&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=&amp;live_configurator_token=79c964ca67a9882cc1c218afac253506&amp;id_shop=1&amp;id_employee=2&amp;theme=&amp;theme_font=#/page-2" rel="next">
+                            <b>Next</b> <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="product-count">
+                Showing 1 - 6 of 29 items
+            </div>
+            <!-- /Pagination -->
+
+        </div>
+    </div>
+
+</div>
+<script src="/js/category.js" type="application/javascript"></script>

@@ -1,0 +1,155 @@
+<div class="modal fade" role="dialog">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Xem nhanh</h4>
+			</div>
+			<div class="modal-body">
+				<div class="primary_block row one-column">
+					<!-- left infos-->
+					<div class="pb-left-column col-sm-6 col-md-6 col-lg-6">
+						<!-- product img-->
+						<div id="image-block" class="clearfix is_caroucel">
+							
+							<span class="new-box no-print" ng-if="product.isnew">
+                                <span class="new-label">New</span>
+                            </span>
+							<span class="sale-box" ng-if="product.forSale">
+								<span class="sale-label">Giảm giá!</span>
+							</span>
+							<span id="view_full_size">
+								<img ng-src="{{imageDefault}}" title="{{product.name}}" alt="{{product.name}}"
+									 width="800" height="800">
+							</span>
+						</div>
+						<!-- end image-block -->
+
+						<!-- thumbnails -->
+						<div id="views_block" class="clearfix">
+							<a id="view_scroll_left" title="Other views" ng-click="scrollUp()"
+							   ng-if="isScrollUp && product.imageDetails.length >2">
+								Previous
+							</a>
+
+							<div id="thumbs_list">
+								<ul id="thumbs_list_frame" class="quick-view" style="height: 100%">
+									<li>
+										<a class="fancybox" title="{{product.name}}">
+											<img class="img-responsive"
+												 ng-src="{{product.image.url}}"
+												 alt="{{product.name}}" title="{{product.name}}" height="80" width="80"
+												 ng-click="changeImage(product.image.url)">
+										</a>
+									</li>
+									<li>
+										<a class="fancybox" title="{{product.name}}">
+											<img class="img-responsive"
+												 ng-src="{{product.imagehover.url}}"
+												 alt="{{product.name}}" title="{{product.name}}" height="80" width="80"
+												 ng-click="changeImage(product.imagehover.url)">
+										</a>
+									</li>
+									<li ng-repeat="image in product.imageDetails">
+										<a href=""
+										   class="fancybox" title="{{product.name}}">
+											<img class="img-responsive"
+												 ng-src="{{image.secure_url}}"
+												 alt="{{product.name}}" title="{{product.name}}" height="80" width="80"
+												 ng-click="changeImage(image.secure_url)"
+											>
+										</a>
+									</li>
+								</ul>
+							</div>
+							<a id="view_scroll_right" title="Other views" ng-click="scrollDown()"
+							   ng-if="isScrollDown && product.imageDetails.length >2">
+								Next
+							</a>
+						</div>
+
+					</div>
+					<!-- center infos -->
+					<div class="pb-right-column  col-xs-5">
+						<div class="product-info-line">
+							<p class="online_only" ng-if="!product.inStock">Trạng thái: </p>
+							<p id="availability_statut" ng-if="!product.inStock">
+								<span id="availability_value" class="label label-danger">Hết hàng trong kho hàng</span>
+							</p>
+							<p id="product_condition">
+								<label>Đặc điểm: </label>
+								<span class="editable" ng-if="product.isnew">Sản phẩm mới</span>
+							</p>
+							<!-- number of item in stock -->
+							<p id="pQuantityAvailable">
+								<span id="quantityAvailable">{{product.qty}}</span>
+								<span id="quantityAvailableTxtMultiple"> sản phẩm</span>
+							</p>
+						</div>
+						<h1>{{product.name}}</h1>
+						<!-- add to cart form-->
+						<form id="buy_block">
+							<div class="box-info-product">
+								<div class="content_prices clearfix">
+									<p class="our_price_display">
+										<span id="our_price_display">{{product.price|currency:"":0}}đ</span>
+									</p>
+									<div class="clear"></div>
+								</div>
+								<!-- end content_prices -->
+								<div class="product_attributes clearfix" ng-if="product.inStock">
+									<div class="clearfix">
+										<!-- quantity wanted -->
+										<p id="quantity_wanted_p">
+											<label>Số lượng:</label>
+											<!-- end center infos-->
+											<input type="text" name="qty" id="quantity_wanted" class="text" value="1"
+												   ng-model="quanlity">
+											<a ng-click="subtractQuanlity()"
+											   class="btn btn-default button-minus product_quantity_down">
+                                                <span>
+                                                    <i class="fa fa-minus"></i>
+                                                </span>
+											</a>
+											<a ng-click="addQuanlity()"
+											   class="btn btn-default button-plus product_quantity_up">
+                                                <span>
+                                                    <i class="fa fa-plus"></i>
+                                                 </span>
+											</a>
+											<span class="clearfix"></span>
+										</p>
+
+										<div id="add_to_cart_product_page_button">
+											<p id="add_to_cart" class="buttons_bottom_block no-print">
+												<button name="Submit" ng-click="addCartModal(product)"
+														class="btn btn-default ajax_add_to_cart_product_button">
+													<span>Add to cart</span>
+												</button>
+											</p>
+										</div>
+									</div>
+								</div>
+								<!-- end product_attributes -->
+							</div>
+							<!-- end box-info-product -->
+						</form>
+						<div class="extra-right">
+							<p class="socialsharing_product no-print">
+								
+								<button data-type="facebook" type="button" class="btn btn-facebook social-sharing">
+									<i class="fa fa-facebook"></i>
+								</button>
+								<a data-type="google-plus" type="button"
+										class="btn btn-google-plus social-sharing" href="https://plus.google.com/share?url=http://namvietbien.herokuapp.com/products/{{product.slug}}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">
+									<i class="fa fa-google-plus"></i>
+								</a>
+								
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

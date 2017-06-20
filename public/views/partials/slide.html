@@ -1,0 +1,13 @@
+<div id="homepage-slider">
+	<div class="bx-wrapper" style="max-width: 870px;">
+		<div class="bx-viewport">
+			<ul id="homeslider">
+				<li ng-repeat="post in posts" ng-init="isFinished($last, post)">
+					<a href="/blogs/{{post.slug}}" title="{{post.title}}">
+						<img ng-src="{{post.image.secure_url}}"/>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

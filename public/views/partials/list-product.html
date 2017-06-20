@@ -1,0 +1,141 @@
+<li class="ajax_block_product col-xs-12 col-sm-4 col-md-4 last-line last-item-of-mobile-line" ng-if="viewGrid"
+    ng-repeat="product in products">
+    <div class="product-container">
+        <div class="left-block">
+            <div class="product-image-container">
+                <a class="product_img_link" href="/products/{{product.slug}}">
+                    <img class="replace-2x img-responsive"
+                         ng-src="{{product.image.secure_url}}" width='250' height='250'>
+                    <img class="img-responsive hover-image"
+                         ng-src="{{product.imagehover.secure_url}}" width='250' height='250'
+                    >
+                </a>
+                <a class="quick-view" ng-click="quickView(product)">
+                    <span>Xem nhanh</span>
+                </a>
+                <a class="new-box" href="/products/{{product.slug}}" ng-if="product.isnew">
+                    <span class="new-label">Mới</span>
+                </a>
+                <a class="sale-box" href="/products/{{product.slug}}" ng-if="product.forSale">
+                    <span class="sale-label">Giảm giá!</span>
+                </a>
+            </div>
+        </div>
+        <div class="right-block">
+            <h5>
+                <a class="product-name"
+                   href="/products/{{product.slug}}"
+                   title="{{product.name}}">
+                    <span class="grid-name">{{product.name}}</span>
+                </a>
+            </h5>
+            <div class="content_price">
+                <span class="price product-price product-price-new" ng-if="product.forSale">{{product.price|currency:"":0}}đ</span>
+                <span class="old-price product-price" ng-if="product.forSale">{{product.newprice|currency:"":0}}đ </span>
+                <span class="price-percent-reduction" ng-if="product.forSale">-{{product.percentsale}}%</span>
+
+
+                <span class="price product-price" ng-if="!product.forSale"> {{product.price|currency:"":0}}đ</span>
+            </div>
+            <div class="comments_note">
+                <star star="product.star"></star>
+            </div>
+            <div class="button-container">
+                <a class="ajax_add_to_cart_button btn btn-default" title="Add to cart" ng-click="onSelect(product)" ng-disabled="!product.inStock">
+                    <span>Thêm vào giỏ hàng</span>
+                </a>
+                <a class="lnk_view btn btn-default" href="/products/{{product.slug}}" title="View">
+                    <span>Xem thêm</span>
+                </a>
+
+            </div>
+			<span class="availability">
+					<span class="available-now" ng-if="product.inStock">
+						Còn hàng
+					</span>
+					<span class="out-of-stock" ng-if="!product.inStock">Hết hàng
+					</span>
+				</span>
+        </div>
+    </div>
+    <!-- .product-container> -->
+</li>
+
+
+<li class="ajax_block_product first-in-line first-item-of-tablet-line first-item-of-mobile-line col-xs-12"
+    ng-repeat="product in products" ng-if="!viewGrid">
+    <div class="product-container">
+        <div class="row">
+            <div class="left-block col-xs-4 col-xs-5 col-md-4">
+                <div class="product-image-container">
+                    <a class="product_img_link" href="/products/{{product.slug}}" title="{{product.name}}">
+                        <img class="replace-2x img-responsive" ng-src="{{product.image.secure_url}}" alt="{{product.slug}}"
+                             title="{{product.slug}}">
+                        <img class="img-responsive hover-image" id="thumb-7" ng-src="{{product.imagehover.secure_url}}"
+                             alt="{{product.name}}" style="opacity: 0;">
+
+                    </a>
+                    <a class="quick-view" ng-click="quickView(product)">
+                        <span>Xem nhanh</span>
+                    </a>
+                    <a class="new-box"
+                       href="/products/{{product.slug}}" ng-if="product.isnew">
+                        <span class="new-label">Mới</span>
+                    </a>
+                    <a class="sale-box" href="/products/{{product.slug}}" ng-if="product.forSale">
+                        <span class="sale-label">Giảm giá!</span>
+                    </a>
+                </div>
+            </div>
+            <div class="center-block col-xs-4 col-xs-7 col-md-4">
+                <div class="product-flags">
+                </div>
+                <h5>
+                    <a class="product-name" href="/products/{{product.slug}}" title="{{product.name}}">
+                        <span class="list-name">{{product.name}}</span>
+
+                    </a>
+                </h5>
+                <p class="product-desc">
+                    <span class="list-desc" ng-bind-html="renderHtml(product.description)"></span>
+                </p>
+                <div class="color-list-container"></div>
+				<span class="availability">
+					<span class="available-now" ng-if="product.inStock">Còn hàng</span>
+					<span class="out-of-stock" ng-if="!product.inStock">Hết hàng</span>
+				</span>
+            </div>
+            <div class="right-block col-xs-4 col-xs-12 col-md-4">
+                <div class="right-block-content row">
+                    <div class="content_price col-xs-5 col-md-12">
+						<span class="price product-price product-price-new"
+                              ng-if="product.forSale">{{product.price|currency:"":2}}₫</span>
+                        <span class="old-price product-price" ng-if="product.forSale">{{product.newprice|currency:"":2}}₫</span>
+                        <span class="price-percent-reduction" ng-if="product.forSale">-{{product.percentsale}}%</span>
+
+
+                        <span class="price product-price" ng-if="!product.forSale">{{product.price}}₫</span>
+
+
+                    </div>
+                    <div class="button-container col-xs-7 col-md-12">
+                        <a class="ajax_add_to_cart_button btn btn-default"
+                           title="Add to cart" ng-click="onSelect(product)" ng-disable="!product.inStock">
+                            <span>Thêm vào giỏ</span>
+                        </a>
+                        <a class="lnk_view btn btn-default"
+                           href="/products/{{product.slug}}"
+                           title="View">
+                            <span>Xem thêm</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+
+
+<li ng-if="products.length==0">
+    <h2 style="text-align: center">Không có sản phẩm</h2>
+</li>

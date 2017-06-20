@@ -13,8 +13,6 @@
     "keystone-email": "1.0.5",
     "lodash": "^4.13.1",
     "moment": "2.17.1",
-    "node-sass": "4.5.0",
-    "node-sass-middleware": "0.11.0",
     "prerender-node": "^2.7.1"
   },
   "devDependencies": {
